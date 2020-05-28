@@ -1,0 +1,33 @@
+CREATE TABLE ipAddresses (ip VARCHAR(20));
+
+INSERT INTO ipAddresses VALUES ( "203.10.91.65" );
+INSERT INTO ipAddresses VALUES ( "203.10.91.66" );
+INSERT INTO ipAddresses VALUES ( "203.10.91.67" );
+INSERT INTO ipAddresses VALUES ( "203.10.91.68" );
+INSERT INTO ipAddresses VALUES ( "203.10.91.69" );
+INSERT INTO ipAddresses VALUES ( "203.10.91.70" );
+INSERT INTO ipAddresses VALUES ( "203.10.91.71" );
+INSERT INTO ipAddresses VALUES ( "203.10.91.72" );
+INSERT INTO ipAddresses VALUES ( "203.10.91.73" );
+INSERT INTO ipAddresses VALUES ( "203.10.91.74" );
+INSERT INTO ipAddresses VALUES ( "203.10.91.75" );
+INSERT INTO ipAddresses VALUES ( "203.10.91.76" );
+INSERT INTO ipAddresses VALUES ( "203.10.91.77" );
+INSERT INTO ipAddresses VALUES ( "203.10.91.78" );
+INSERT INTO ipAddresses VALUES ( "203.10.91.79" );
+INSERT INTO ipAddresses VALUES ( "203.10.91.80" );
+INSERT INTO ipAddresses VALUES ( "203.10.91.81" );
+INSERT INTO ipAddresses VALUES ( "203.10.91.82" );
+INSERT INTO ipAddresses VALUES ( "203.10.91.83" );
+INSERT INTO ipAddresses VALUES ( "203.10.91.84" );
+INSERT INTO ipAddresses VALUES ( "203.10.91.85" );
+INSERT INTO ipAddresses VALUES ( "203.10.91.86" );
+INSERT INTO ipAddresses VALUES ( "203.10.91.87" );
+INSERT INTO ipAddresses VALUES ( "203.10.91.88" );
+INSERT INTO ipAddresses VALUES ( "203.10.91.89" );
+INSERT INTO ipAddresses VALUES ( "203.10.91.90" );
+INSERT INTO ipAddresses VALUES ( "203.10.91.91" );
+INSERT INTO ipAddresses VALUES ( "203.10.91.92" );
+INSERT INTO ipAddresses VALUES ( "203.10.91.93" );
+INSERT INTO ipAddresses VALUES ( "203.10.91.94" );
+
