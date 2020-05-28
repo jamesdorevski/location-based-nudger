@@ -14,7 +14,7 @@ let compareIpAddress = (publicIP) => {
 
 let initaliseDb = (publicIP) => {
     config = {
-        locateFile: (file) => `/sqljs-wasm/${file}`
+        locateFile: (file) => `../lib/sqljs-wasm/${file}`
     };
 
     initSqlJs(config).then(function(SQL) {
