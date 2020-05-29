@@ -3,11 +3,12 @@ let getPublicIpAddress = () => {
     let publicIP;
 
     $.ajax({ 
+        
         url: 'https://api.ipify.org?format=json', 
         dataType: 'json', 
         async: false, 
         success: function(data){ 
-            
+
             publicIP = data;
         } 
     });

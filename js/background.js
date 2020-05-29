@@ -1,14 +1,29 @@
 chrome.runtime.onInstalled.addListener(function() {
 
-    let pattern = "*://*.facebook.com/*";
+    initaliseDb();
+    let dbPromise = getDb();
 
-    // let nudgeSite = () => {
-    //     if (determineIfAtCampus(getDb, ))
-    // };
-    
+    // check if at uni AND on fb
+    dbPromise.then(db => {
+        // is at uni 
+
+        //debug
+        console.log(determineIfAtCampus(db, getPublicIpAddress()));
+
+        if (determineIfAtCampus(db, getPublicIpAddress()) == 1) {
+            redirectSite();
+        }
+    });
+});
+
+let redirectSite = () => {
+
+    let facebookUrl = "*://*.facebook.com/*";
+    let twitterUrl = "*://*.twitter.com/*";
+
     chrome.webRequest.onBeforeRequest.addListener(
         redirect,
-        {urls: [pattern] },
+        {urls: [facebookUrl, twitterUrl] },
         ["blocking"]
     );
 
@@ -18,4 +33,4 @@ chrome.runtime.onInstalled.addListener(function() {
           redirectUrl: "chrome-extension://fdcianmgcblpcphklfimgniikdolhpfm/html/nudge-site.html"
         };
     };
-});
+};
