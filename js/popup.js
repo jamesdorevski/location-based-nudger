@@ -1,10 +1,10 @@
-let getIpButton = document.getElementById("getIP").onclick = function() {
-   
+window.onload = function() {
+
     $.getJSON('https://api.ipify.org?format=json', function(data) {
    
         document.getElementById('showIP').innerHTML = 'Your IP address is: ' + data.ip;
         compareIpAddress(data.ip);
-    });
+    }); 
 };
 
 let compareIpAddress = (publicIP) => {
@@ -17,25 +17,6 @@ let compareIpAddress = (publicIP) => {
         let atCampus = determineIfAtCampus(db, publicIP);
         displayIfAtCampus(atCampus);
     });
-};
-
-let initaliseDb = () => {
-    
-    config = {
-        locateFile: (file) => `../lib/sqljs-wasm/${file}`
-    };
-
-    let dbPromise = initSqlJs(config).then(function(SQL) {
-
-        let db = new SQL.Database();
-        
-        createTable(db);
-        populateTable(db);
-
-        return db;
-    }); 
-
-    return dbPromise;
 };
 
 let determineIfAtCampus = (db, publicIP) => {
