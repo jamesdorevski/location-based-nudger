@@ -6,13 +6,33 @@
         <style>
             body {
                 background-image: url(https://source.unsplash.com/1920x1080/?nature);
+                /* blur effect */
+                backdrop-filter: blur(8);
             }
+
+            #persuasiveText {
+                font-size: 24px;
+                height: 10em;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+            button {
+                width: 100px;
+                height: 50px;
+                align-items: center;
+                justify-content: center;
+            }               
         </style>
     </head>
 
     <body>
-        <div id="showIP">Loading...</div>
+        <div id="persuasiveText">Hey there pal, did you really want to go to this website or did you want to keep on your working?</div>
+        
+        <button id="acknowledgeButton">Nope, I want to continue</button>
 
+        <script src="../js/nudge-site.js"></script>
     </body>
 
 </html>

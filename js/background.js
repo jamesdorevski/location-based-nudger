@@ -29,6 +29,8 @@ let redirectSite = () => {
 
     function redirect(requestDetails) {
         console.log("Redirecting: " + requestDetails.url);
+        // sending url to nudge-site.js so user can choose to continue
+
         return {
             redirectUrl: "chrome-extension://" + chrome.runtime.id + "/html/nudge-site.html"
         };

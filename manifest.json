@@ -1,7 +1,7 @@
 {
-	"name": "Get IP Address",
-	"version": "1.0",
-	"description": "Returns current user's public IP address",
+	"name": "Location Nudger",
+	"version": "1.1",
+	"description": "Personal study wingman.",
     "permissions": [ 
         "declarativeContent", 
         "storage", 
@@ -17,6 +17,7 @@
             "lib/sqljs-wasm/sql-wasm.js",
             "js/dbSetup.js",
             "js/blockHelper.js",
+            "js/nudge-site.js",
             "js/background.js"
         ]
     },
