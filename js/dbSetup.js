@@ -1,10 +1,12 @@
+let dbPromise;
+
 let initaliseDb = () => {
     
     config = {
         locateFile: (file) => `../lib/sqljs-wasm/${file}`
     };
 
-    let dbPromise = initSqlJs(config).then(function(SQL) {
+    dbPromise = initSqlJs(config).then(function(SQL) {
 
         let db = new SQL.Database();
         
@@ -12,8 +14,13 @@ let initaliseDb = () => {
         populateTable(db);
 
         return db;
-    }); 
+    });    
 
+    // return dbPromise;
+};
+
+let getDb = () => {
+    
     return dbPromise;
 };
 

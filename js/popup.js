@@ -9,11 +9,12 @@ window.onload = function() {
 
 let compareIpAddress = (publicIP) => {
 
-    // returns a promise that you need to retrieve the result of (the db)
-    let dbPromise = initaliseDb();
-    
+    initaliseDb();
+
+    let dbPromise = getDb();
+
     dbPromise.then(db => {
-        
+
         let atCampus = determineIfAtCampus(db, publicIP);
         displayIfAtCampus(atCampus);
     });

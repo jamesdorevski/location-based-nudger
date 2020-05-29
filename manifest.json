@@ -5,6 +5,8 @@
     "permissions": [ "declarativeContent", "storage" ],
     "background": {
         "scripts": [
+            "lib/sqljs-wasm/sql-wasm.js",
+            "js/dbSetup.js",
             "js/background.js"
         ]
     },
