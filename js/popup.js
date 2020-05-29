@@ -1,10 +1,11 @@
 window.onload = function() {
 
-    $.getJSON('https://api.ipify.org?format=json', function(data) {
-   
-        document.getElementById('showIP').innerHTML = 'Your IP address is: ' + data.ip;
-        compareIpAddress(data.ip);
-    }); 
+
+    let publicIP = getPublicIpAddress();
+
+    this.document.getElementById("showIP").innerHTML = "Your public IP address is: " + publicIP;
+    
+    compareIpAddress(publicIP);
 };
 
 let compareIpAddress = (publicIP) => {
@@ -18,14 +19,6 @@ let compareIpAddress = (publicIP) => {
         let atCampus = determineIfAtCampus(db, publicIP);
         displayIfAtCampus(atCampus);
     });
-};
-
-let determineIfAtCampus = (db, publicIP) => {
-
-    let result = db.prepare("SELECT COUNT(ip) AS count FROM ipAddresses WHERE ip LIKE '%"+ publicIP +"%' ORDER BY ip ASC;");
-    result.step();
-
-    return result.getAsObject().count;
 };
 
 let displayIfAtCampus = (atCampus) => {

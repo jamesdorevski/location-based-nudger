@@ -14,13 +14,11 @@ let initaliseDb = () => {
         populateTable(db);
 
         return db;
-    });    
-
-    // return dbPromise;
+    });   
 };
 
 let getDb = () => {
-    
+
     return dbPromise;
 };
 
