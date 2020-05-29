@@ -2,7 +2,15 @@
 	"name": "Get IP Address",
 	"version": "1.0",
 	"description": "Returns current user's public IP address",
-    "permissions": [ "declarativeContent", "storage" ],
+    "permissions": [ 
+        "declarativeContent", 
+        "storage", 
+        "tabs", 
+        "webRequest", 
+        "webRequestBlocking",
+        "*://*.facebook.com/*",
+        "*://*.twitter.com/*"
+    ],
     "background": {
         "scripts": [
             "lib/sqljs-wasm/sql-wasm.js",
@@ -26,5 +34,8 @@
         "128": "images/get_started128.png"
     },
     "content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self'",
+    "web_accessible_resources": [
+        "html/nudge-site.html"
+    ],
 	"manifest_version": 2
 }
