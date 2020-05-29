@@ -8,7 +8,7 @@ chrome.runtime.onInstalled.addListener(function() {
         // is at uni 
 
         //debug
-        console.log(determineIfAtCampus(db, getPublicIpAddress()));
+        console.log("Is at uni: " + determineIfAtCampus(db, getPublicIpAddress()));
 
         if (determineIfAtCampus(db, getPublicIpAddress()) == 1) {
             redirectSite();
@@ -19,18 +19,18 @@ chrome.runtime.onInstalled.addListener(function() {
 let redirectSite = () => {
 
     let facebookUrl = "*://*.facebook.com/*";
-    let twitterUrl = "*://*.twitter.com/*";
+    let redditUrl = "*://*.reddit.com/*";
 
     chrome.webRequest.onBeforeRequest.addListener(
         redirect,
-        {urls: [facebookUrl, twitterUrl] },
+        {urls: [facebookUrl, redditUrl] },
         ["blocking"]
     );
 
     function redirect(requestDetails) {
         console.log("Redirecting: " + requestDetails.url);
         return {
-          redirectUrl: "chrome-extension://fdcianmgcblpcphklfimgniikdolhpfm/html/nudge-site.html"
+            redirectUrl: "chrome-extension://" + chrome.runtime.id + "/html/nudge-site.html"
         };
     };
 };

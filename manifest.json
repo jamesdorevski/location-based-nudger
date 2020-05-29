@@ -9,7 +9,7 @@
         "webRequest", 
         "webRequestBlocking",
         "*://*.facebook.com/*",
-        "*://*.twitter.com/*"
+        "*://*.reddit.com/*"
     ],
     "background": {
         "scripts": [
