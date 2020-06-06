@@ -1,3 +1,5 @@
+let redirectedUrl; 
+
 chrome.runtime.onInstalled.addListener(function() {
 
     initaliseDb();
@@ -10,13 +12,21 @@ chrome.runtime.onInstalled.addListener(function() {
         //debug
         console.log("Is at uni: " + determineIfAtCampus(db, getPublicIpAddress()));
 
-        if (determineIfAtCampus(db, getPublicIpAddress()) == 1) {
+        let foo = 1; // debug
+
+        // checking if user is trying to access from nudge-site
+        if (foo == 1) {
             redirectSite();
+            sendMessageToNudgeSite();
         }
     });
 });
 
+
+
 let redirectSite = () => {
+
+    console.log("called");
 
     let facebookUrl = "*://*.facebook.com/*";
     let redditUrl = "*://*.reddit.com/*";
@@ -30,9 +40,23 @@ let redirectSite = () => {
     function redirect(requestDetails) {
         console.log("Redirecting: " + requestDetails.url);
         // sending url to nudge-site.js so user can choose to continue
+        redirectedUrl = requestDetails.url;
 
         return {
             redirectUrl: "chrome-extension://" + chrome.runtime.id + "/html/nudge-site.html"
         };
+    };
+};
+
+let sendMessageToNudgeSite = () => {
+
+    chrome.webRequest.onBeforeRequest.addListener(
+        sendUrl,
+        {urls: ["chrome-extension://" + chrome.runtime.id + "/html/nudge-site.html"]}
+    );
+
+    function sendUrl() {
+        chrome.runtime.sendMessage(redirectedUrl);
+        console.log("sent");
     };
 };
