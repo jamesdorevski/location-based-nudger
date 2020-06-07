@@ -1,62 +1,59 @@
-let redirectedUrl; 
+let isAtUni;
+let redirectedUrl;
+let onNudgeSite = 0; 
+let facebookUrl = '*://*.facebook.com/*';
+let redditUrl = '*://*.reddit.com/*';
 
+// init sqllite db 
 chrome.runtime.onInstalled.addListener(function() {
-
+    
     initaliseDb();
-    let dbPromise = getDb();
+	let dbPromise = getDb();
 
-    // check if at uni AND on fb
-    dbPromise.then(db => {
-        // is at uni 
-
-        //debug
-        console.log("Is at uni: " + determineIfAtCampus(db, getPublicIpAddress()));
-
-        let foo = 1; // debug
-
-        // checking if user is trying to access from nudge-site
-        if (foo == 1) {
-            redirectSite();
-            sendMessageToNudgeSite();
-        }
-    });
+	// determine if at uni
+	dbPromise.then((db) => {
+		isAtUni = determineIfAtCampus(db, getPublicIpAddress());
+	});
 });
 
+chrome.webRequest.onBeforeRequest.addListener(
+    redirectUrl, 
+    { urls: [ facebookUrl, redditUrl ] }, 
+    ["blocking"]
+);
 
+function redirectUrl(requestDetails) {
+    
+    console.log("is at uni: " + isAtUni);
+    console.log("is on nudge site: " + onNudgeSite);
 
-let redirectSite = () => {
+    if (onNudgeSite == 0) {
+        if (isAtUni == 1) {
+        
+            console.log('Redirecting: ' + requestDetails.url);
+            redirectedUrl = requestDetails.url;
 
-    console.log("called");
+            // flag so user can continue to site once confirmed
+            onNudgeSite = 1; 
 
-    let facebookUrl = "*://*.facebook.com/*";
-    let redditUrl = "*://*.reddit.com/*";
-
-    chrome.webRequest.onBeforeRequest.addListener(
-        redirect,
-        {urls: [facebookUrl, redditUrl] },
-        ["blocking"]
-    );
-
-    function redirect(requestDetails) {
-        console.log("Redirecting: " + requestDetails.url);
-        // sending url to nudge-site.js so user can choose to continue
-        redirectedUrl = requestDetails.url;
-
-        return {
-            redirectUrl: "chrome-extension://" + chrome.runtime.id + "/html/nudge-site.html"
-        };
-    };
+            return {
+                redirectUrl: 'chrome-extension://' + chrome.runtime.id + '/html/nudge-site.html'
+            };
+        }
+    }
 };
 
-let sendMessageToNudgeSite = () => {
 
-    chrome.webRequest.onBeforeRequest.addListener(
-        sendUrl,
-        {urls: ["chrome-extension://" + chrome.runtime.id + "/html/nudge-site.html"]}
-    );
+chrome.runtime.onMessage.addListener( (request, sender, sendResponse) => {
+    if (request.nudgeLoaded === 1) {
+        console.log("nudge site loaded");
+        sendResponse({url: redirectedUrl});
+    }
+});
 
-    function sendUrl() {
-        chrome.runtime.sendMessage(redirectedUrl);
-        console.log("sent");
-    };
-};
+chrome.runtime.onMessage.addListener( (request) => {
+    if (request.offNudgeSite == 1) {
+        console.log("confirmed user has left nudged site");
+        onNudgeSite = 0;
+    }
+});

@@ -1,13 +1,20 @@
 let originalUrl;
 
-chrome.runtime.onMessage.addListener(function(request) {
-    console.log('url recieved: ' + request);
-
-    originalUrl = request;
-    // console.log(originalUrl);
+document.getElementById("acknowledgeButton").addEventListener("click", function() {
+    window.location.replace(originalUrl);
 });
 
-document.getElementById("acknowledgeButton").addEventListener("click", function() {
-    console.log("in button: " + originalUrl);
-    window.location.replace(originalUrl);
+// recieve the original url once nudge-site has completed loaded 
+window.addEventListener('load', function() {
+    this.console.log("page has completed loaded");
+
+    chrome.runtime.sendMessage({nudgeLoaded: 1}, function(response) {
+        console.log("response recieved:" + response.url);
+        originalUrl = response.url;
+    });
+});
+
+// notify background that user went back 
+window.addEventListener('unload', function(event) {
+    chrome.runtime.sendMessage({offNudgeSite: 1});
 });

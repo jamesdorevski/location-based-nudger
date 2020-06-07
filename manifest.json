@@ -1,11 +1,12 @@
 {
 	"name": "Location Nudger",
-	"version": "1.1",
+	"version": "1.0",
 	"description": "Personal study wingman.",
     "permissions": [ 
         "declarativeContent", 
         "storage", 
         "tabs", 
+        "activeTab",
         "webRequest", 
         "webRequestBlocking",
         "*://*.facebook.com/*",
@@ -34,5 +35,12 @@
     "web_accessible_resources": [
         "html/nudge-site.html"
     ],
+    "content_scripts": [
+        {
+          "matches": ["*://*.facebook.com/*", "*://*.reddit.com/*"],
+          "exclude_matches": ["*://*.facebook.com/ajax/*", "https://www.reddit.com/sw.js"],
+          "js": ["js/contentScript.js"]
+        }
+      ],
 	"manifest_version": 2
 }

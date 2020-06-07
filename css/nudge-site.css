@@ -1,0 +1,17 @@
+body {
+    background-image: url(https://source.unsplash.com/3840x2160/?nature);
+}
+
+#persuasiveText {
+    font-size: 32px;
+    font-family: 'Raleway', sans-serif;
+    height: 500px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.container {
+    background-color: ghostwhite;
+}
+
