@@ -1,17 +1,62 @@
 body {
-    background-image: url(https://source.unsplash.com/3840x2160/?nature);
+	background-image: url(https://source.unsplash.com/3840x2160/?nature);
+}
+
+.transparentBox {
+  margin-top: 575px;
+  margin-left: 740px;
+  height: 310px;
+  width: 1525px;
+  display: flex;
+  position: fixed;
+  align-items: center;
+  justify-content: center;
+  background: white;
+  opacity: 0.7;
+  box-shadow: 0 0 32px rgba(0, 0, 0, 0.5); 
+}
+
+.textContainer {
+  height: 80%;
+  width: 100%;
+  display: flex;
+  position: fixed;
+  align-items: center;
+  justify-content: center;
 }
 
 #persuasiveText {
-    font-size: 32px;
-    font-family: 'Raleway', sans-serif;
-    height: 500px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+	font-size: 32px;
+  font-family: 'Raleway', sans-serif;
+  /* display: inline-block; */
 }
 
-.container {
-    background-color: ghostwhite;
+.buttonContainer {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  position: fixed;
+  align-items: center;
+  justify-content: center;
 }
 
+#backButton {
+  font-size: 18px;
+  font-family: 'Raleway', sans-serif;
+  width: 200px;
+  height: 75px;
+  margin: 15px;
+  border: 0;
+  background-color: white;
+}
+
+#acknowledgeButton {
+  font-size: 18px;
+  font-family: 'Raleway', sans-serif;
+  width: 200px;
+  height: 75px;
+  margin: 15px;
+  border: 0;
+  color: white;
+  background-color: rgb(238, 54, 54);
+}
