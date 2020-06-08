@@ -17,8 +17,8 @@ window.addEventListener('load', () => {
         originalUrl = response.url;
     });
 
-    // unhide acknowledge button 
-    document.getElementById("acknowledgeButton").style.display = "block";
+    // unhide acknowledge button
+    document.getElementById("acknowledgeButton").style.backgroundColor = "red";
 });
 
 // notify background that user went back 

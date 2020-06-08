@@ -24,7 +24,7 @@ function redirectUrl(requestDetails) {
 	console.log('is on nudge site: ' + onNudgeSite);
 
 	if (onNudgeSite === 0) {
-		if (isAtUni === 0) {
+		if (isAtUni === 1) {
 			console.log('Redirecting: ' + requestDetails.url);
 			redirectedUrl = requestDetails.url;
 
