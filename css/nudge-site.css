@@ -51,6 +51,7 @@ body {
 }
 
 #acknowledgeButton {
+  display: none;
   font-size: 18px;
   font-family: 'Raleway', sans-serif;
   width: 200px;

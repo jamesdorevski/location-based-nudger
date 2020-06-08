@@ -16,15 +16,15 @@ chrome.runtime.onInstalled.addListener( () => {
 	});
 });
 
+// listens for when user attempts to access a blacklisted site
 chrome.webRequest.onBeforeRequest.addListener(redirectUrl, { urls: [ facebookUrl, redditUrl ] }, [ 'blocking' ]);
-
 function redirectUrl(requestDetails) {
     
     console.log('is at uni: ' + isAtUni);
 	console.log('is on nudge site: ' + onNudgeSite);
 
-	if (onNudgeSite == 0) {
-		if (isAtUni == 1) {
+	if (onNudgeSite === 0) {
+		if (isAtUni === 0) {
 			console.log('Redirecting: ' + requestDetails.url);
 			redirectedUrl = requestDetails.url;
 
@@ -46,7 +46,7 @@ chrome.runtime.onMessage.addListener( (request, sender, sendResponse) => {
 });
 
 chrome.runtime.onMessage.addListener( (request) => {
-	if (request.offNudgeSite == 1) {
+	if (request.offNudgeSite === 1) {
 		console.log('confirmed user has left nudged site');
 		onNudgeSite = 0;
 	}

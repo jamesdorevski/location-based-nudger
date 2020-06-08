@@ -16,6 +16,9 @@ window.addEventListener('load', () => {
         console.log("response recieved:" + response.url);
         originalUrl = response.url;
     });
+
+    // unhide acknowledge button 
+    document.getElementById("acknowledgeButton").style.display = "block";
 });
 
 // notify background that user went back 
