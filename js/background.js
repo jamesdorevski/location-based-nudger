@@ -5,7 +5,7 @@ let facebookUrl = '*://*.facebook.com/*';
 let redditUrl = '*://*.reddit.com/*';
 
 // init sqllite db
-chrome.runtime.onInstalled.addListener( () => {
+chrome.runtime.onStartup.addListener( () => {
     
     initaliseDb();
 	let dbPromise = getDb();
@@ -24,7 +24,9 @@ function redirectUrl(requestDetails) {
 	console.log('is on nudge site: ' + onNudgeSite);
 
 	if (onNudgeSite === 0) {
-		if (isAtUni === 1) {
+		
+		// change this if to 0 if you want to bring up nudge outside of campus
+		if (isAtUni === 1) { 
 			console.log('Redirecting: ' + requestDetails.url);
 			redirectedUrl = requestDetails.url;
 
