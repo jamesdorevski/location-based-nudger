@@ -5,7 +5,7 @@ let facebookUrl = '*://*.facebook.com/*';
 let redditUrl = '*://*.reddit.com/*';
 
 // init sqllite db
-chrome.runtime.onInstalled.addListener( () => {
+chrome.runtime.onStartup.addListener( () => {
     
     initaliseDb();
 	let dbPromise = getDb();
