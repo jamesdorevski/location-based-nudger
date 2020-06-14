@@ -1,31 +1,26 @@
 <!DOCTYPE html>
-
 <html>
+<head>
+    <style>
+        div {
+            width: 100px;
+            text-align: center;
+            color: red;
+            font-family: 'Raleway', sans-serif;
+        }
+    </style>
+</head>
+<body>
+    <div id="showIP">Loading...</div>
+    <br />
+    <div id="atCampusDiv"></div>
 
-    <head>
-        <style>
-            div {
-                width: 100px;
-                text-align: center;
-                color: red;
-                font-family: 'Raleway', sans-serif;
-            }
-        </style>
-    </head>
-
-    <body>
-        <div id="showIP">Loading...</div>
-
-        <br />
-
-        <div id="atCampusDiv"></div>
-
-        <script src= "../lib/jquery-3.5.1.js"></script>
-        <script src="../lib/sqljs-wasm/sql-wasm.js"></script>
-        <script src="../js/dbSetup.js"></script>
-        <script src="../js/blockHelper.js"></script>
-        <script src="../js/background.js"></script>
-        <script src="../js/popup.js"></script>
-    </body>
+    <script src="../lib/jquery-3.5.1.js"></script>
+    <script src="../lib/sqljs-wasm/sql-wasm.js"></script>
+    <script src="../js/dbSetup.js"></script>
+    <script src="../js/blockHelper.js"></script>
+    <script src="../js/background.js"></script>
+    <script src="../js/popup.js"></script>
+</body>
 
 </html>
